@@ -40,15 +40,13 @@ export default function MentionField() {
 		mentionSpan.textContent = `@${mentionName}`;
 		mentionSpan.className = "bg-sky-200 rounded px-1";
 		mentionSpan.setAttribute("contenteditable", "false");
-
-		const spaceNode = document.createTextNode("\u00A0");
-
 		range.insertNode(mentionSpan);
-		range.setStartAfter(mentionSpan);
-		range.insertNode(spaceNode);
 
-		range.setStartAfter(spaceNode);
-		range.collapse(true);
+		range.collapse(false);
+		const space = document.createTextNode(" ");
+		range.insertNode(space);
+		range.setStartAfter(space);
+		range.setEndAfter(space);
 
 		const selection = window.getSelection();
 		selection?.removeAllRanges();
