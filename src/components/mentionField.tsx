@@ -112,7 +112,7 @@ export default function MentionField() {
 		const upToCaret = nodeText.substring(0, focusOffset);
 
 		// Detects mention character without triggering on email address
-		const match = upToCaret.match(/(?:\s|^)@(\w*)$/);
+		const match = upToCaret.match(/(?:^|\s)@([\w ]*)$/);
 		if (!match) {
 			setShowSuggestions(false);
 			mentionSelectionRef.current = null;
